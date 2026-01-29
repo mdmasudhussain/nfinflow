@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Cards with glassmorphism */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Teal/Cyan */
+    --primary: 174 72% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 174 72% 50%;
+
+    /* Secondary */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted */
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent */
+    --accent: 174 60% 95%;
+    --accent-foreground: 174 72% 30%;
+
+    /* Financial Colors */
+    --income: 160 60% 45%;
+    --income-foreground: 0 0% 100%;
+    --income-muted: 160 50% 94%;
+    
+    --expense: 350 75% 55%;
+    --expense-foreground: 0 0% 100%;
+    --expense-muted: 350 60% 95%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 174 72% 40%;
+
+    --radius: 1rem;
+
+    /* Glassmorphism */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.3;
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+
+    /* Sidebar */
+    --sidebar-background: 210 20% 97%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 174 72% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 174 60% 95%;
+    --sidebar-accent-foreground: 174 72% 30%;
+    --sidebar-border: 214 20% 92%;
+    --sidebar-ring: 174 72% 40%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 222 47% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 47% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 174 72% 45%;
+    --primary-foreground: 222 47% 8%;
+    --primary-glow: 174 72% 55%;
+
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 222 47% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 174 40% 20%;
+    --accent-foreground: 174 72% 70%;
+
+    --income: 160 60% 50%;
+    --income-foreground: 222 47% 8%;
+    --income-muted: 160 40% 20%;
+    
+    --expense: 350 75% 60%;
+    --expense-foreground: 222 47% 8%;
+    --expense-muted: 350 50% 20%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 174 72% 45%;
+
+    --glass-bg: 222 47% 12% / 0.8;
+    --glass-border: 222 47% 25% / 0.3;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+    --sidebar-background: 222 47% 10%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 174 72% 45%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 174 40% 20%;
+    --sidebar-accent-foreground: 174 72% 70%;
+    --sidebar-border: 222 47% 18%;
+    --sidebar-ring: 174 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-card/70 backdrop-blur-xl border border-white/20 shadow-lg;
+  }
+
+  /* Neumorphic Shadow */
+  .neu-shadow {
+    box-shadow: 
+      8px 8px 16px hsl(var(--muted) / 0.5),
+      -8px -8px 16px hsl(var(--background));
+  }
+
+  .dark .neu-shadow {
+    box-shadow: 
+      8px 8px 16px rgba(0, 0, 0, 0.3),
+      -8px -8px 16px rgba(255, 255, 255, 0.03);
+  }
+
+  /* Income/Expense badges */
+  .badge-income {
+    @apply bg-income/10 text-income border border-income/20;
+  }
+
+  .badge-expense {
+    @apply bg-expense/10 text-expense border border-expense/20;
+  }
+
+  /* Animated gradient background */
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.05) 0%,
+      hsl(var(--background)) 50%,
+      hsl(var(--income) / 0.03) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
